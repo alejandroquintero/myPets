@@ -1,0 +1,43 @@
+body{
+  background: #FAF9F9;
+}
+
+.navbar-brand{
+  height: auto;
+}
+
+#main-bar{
+  background: #F16252;
+  border: solid 5px #D6584D;
+  color: #FFF;
+  line-height: 105px;
+  padding: 0 30px;
+}
+
+.navbar-header{
+  padding-left: 30px;
+}
+
+.navbar-default .navbar-nav > li > a{
+  float: none;
+  display: inline-block;
+  color: #FFF;
+  font-size: 1.3em;
+  font-weight: bold;
+  line-height: 1.3em;
+  padding: 15px;
+  box-sizing: border-box;
+  vertical-align: middle;
+}
+
+.navbar-default .navbar-nav > li > button{
+  background: none;
+  color: #FFF;
+  border: none;
+  font-size: 1.3em;
+  font-weight: bold;
+  line-height: 1.3em;
+  padding: 15px;
+  box-sizing: border-box;
+  vertical-align: middle;
+}
