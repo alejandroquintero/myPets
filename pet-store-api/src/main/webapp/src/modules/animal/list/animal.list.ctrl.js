@@ -25,8 +25,9 @@ SOFTWARE.
 
     var mod = ng.module("animalModule");
 
-    mod.controller("animalListCtrl", ["$scope", '$state', 'animals', '$stateParams',
-        function ($scope, $state, animals, $params) {
+    mod.controller("animalListCtrl", ["$scope", '$state', 'animals', '$stateParams','model',
+        function ($scope, $state, animals, $params, model) {
+            $scope.model = model;
             $scope.records = animals;
 
             //Paginación

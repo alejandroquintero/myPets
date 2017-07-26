@@ -29,6 +29,12 @@ SOFTWARE.
         displayName: 'Breed',
         url: 'breeds',
         fields: {
+            name: {
+                
+                displayName: 'Name',
+                type:  'String',
+                required:false
+            },
             description: {
                 
                 displayName: 'Description',
@@ -98,7 +104,9 @@ SOFTWARE.
                         controller: 'breedListCtrl',
                         controllerAs: 'ctrl'
                     }
-                },
+                },resolve:{
+						model: 'breedModel'
+					},
                      ncyBreadcrumb: {
                                 label: 'breed'
                            }
@@ -113,6 +121,9 @@ SOFTWARE.
                         controllerAs: 'ctrl'
                     }
                 },
+                  resolve:{
+						model: 'breedModel'
+					},
                      ncyBreadcrumb: {
                                 parent :'breedList', 
                                 label: 'new'
@@ -142,6 +153,9 @@ SOFTWARE.
                         controller: 'breedDetailCtrl'
                     }
                 },
+                  resolve:{
+						model: 'breedModel'
+					},
                      ncyBreadcrumb: {
                                 parent :'breedList', 
                                 label: 'details'
@@ -158,9 +172,12 @@ SOFTWARE.
                         controllerAs: 'ctrl'
                     }
                 },
+                  resolve:{
+						model: 'breedModel'
+					},
                      ncyBreadcrumb: {
                                 parent :'breedDetail', 
-                                label: 'new'
+                                label: 'edit'
                            }
             });
             $sp.state('breedDelete', {
@@ -172,7 +189,10 @@ SOFTWARE.
                         controller: 'breedDeleteCtrl',
                         controllerAs: 'ctrl'
                     }
-                }
+                },
+                  resolve:{
+						model: 'breedModel'
+					}
             });
             $sp.state('breedAnimal', {
                 url: '/animal',
@@ -184,6 +204,7 @@ SOFTWARE.
                     }
                 },
                 resolve: {
+                     
                     animal: ['breed', function (breed) {
                             return breed.getList('animal');
                         }],
@@ -211,6 +232,7 @@ SOFTWARE.
                     }
                 },
                 resolve: {
+                    model: 'animalModel',
                     pool: ['Restangular', 'model', function (r, model) {
                             return r.all(model.url).getList();
                         }]

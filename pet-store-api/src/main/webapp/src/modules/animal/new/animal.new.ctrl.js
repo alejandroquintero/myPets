@@ -26,8 +26,9 @@ SOFTWARE.
 
     var mod = ng.module("animalModule");
 
-    mod.controller("animalNewCtrl", ["$scope", "$state", "animals",
-        function ($scope, $state, animals) {
+    mod.controller("animalNewCtrl", ["$scope", "$state", "animals","model",
+        function ($scope, $state, animals, model) {
+            $scope.model = model;
             $scope.currentRecord = {};
             $scope.actions = {
                 save: {

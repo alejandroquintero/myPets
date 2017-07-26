@@ -25,8 +25,9 @@ SOFTWARE.
 
     var mod = ng.module("breedModule");
 
-    mod.controller("breedDeleteCtrl", ["$state", "breed", function ($state, breed) {
-            this.confirmDelete = function () {
+    mod.controller("breedDeleteCtrl", ["$state", "breed","model","$scope", function ($state, breed,model,$scope) {
+           $scope.model = model;
+             this.confirmDelete = function () {
                 breed.remove().then(function () {
                     $state.go('breedList', null, {reload: true});
                 });

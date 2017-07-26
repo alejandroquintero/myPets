@@ -25,8 +25,9 @@ SOFTWARE.
 
     var mod = ng.module("specieModule");
 
-    mod.controller("specieListCtrl", ["$scope", '$state', 'species', '$stateParams',
-        function ($scope, $state, species, $params) {
+    mod.controller("specieListCtrl", ["$scope", '$state', 'species', '$stateParams','model',
+        function ($scope, $state, species, $params, model) {
+            $scope.model = model;
             $scope.records = species;
 
             //Paginación

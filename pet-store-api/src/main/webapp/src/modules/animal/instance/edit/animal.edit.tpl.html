@@ -27,6 +27,48 @@ SOFTWARE.
 </header>
 <form novalidate name="animalForm" role="form">
     <fieldset>
-        <crud-form fields='model.fields' record='currentRecord' lists-of-values="references"></crud-form>
+        <input id="id" class="form-control" type="hidden" ng-model="currentRecord.id"/>
+    <div class="form-group col-md-12" ng-class="{'has-success': animalForm.name.$valid && animalForm.name.$dirty, 'has-error': animalForm.name.$invalid && animalForm.name.$dirty}" >
+        <label for="name" class="col-md-2 control-label">Name</label>
+        <div class="col-md-10">
+            <input id="name" name="name" class="form-control" type="text" ng-model="currentRecord.name" ng-required="true" />
+        </div>
+    </div>
+    <div class="form-group col-md-12" ng-class="{'has-success': animalForm.birthDate.$valid && animalForm.birthDate.$dirty, 'has-error': animalForm.birthDate.$invalid && animalForm.birthDate.$dirty}" >
+        <label for="birthDate" class="col-md-2 control-label">BirthDate</label>
+        <div class="col-md-10">
+            <date-picker value="currentRecord.birthDate" model="birthDate"></date-picker>
+        </div>
+    </div>
+    <div class="form-group col-md-12" ng-class="{'has-success': animalForm.color.$valid && animalForm.color.$dirty, 'has-error': animalForm.color.$invalid && animalForm.color.$dirty}" >
+        <label for="color" class="col-md-2 control-label">Color</label>
+        <div class="col-md-10">
+            <input id="color" name="color" class="form-control" type="text" ng-model="currentRecord.color" ng-required="true" />
+        </div>
+    </div>
+    <div class="form-group col-md-12" ng-class="{'has-success': animalForm.gender.$valid && animalForm.gender.$dirty, 'has-error': animalForm.gender.$invalid && animalForm.gender.$dirty}" >
+        <label for="gender" class="col-md-2 control-label">Gender</label>
+        <div class="col-md-10">
+            <input id="gender" name="gender" class="form-control" type="text" ng-model="currentRecord.gender" ng-required="true" />
+        </div>
+    </div>
+    <div class="form-group col-md-12" ng-class="{'has-success': animalForm.mother.$valid && animalForm.mother.$dirty, 'has-error': animalForm.mother.$invalid && animalForm.mother.$dirty}" >
+        <label for="mother" class="col-md-2 control-label">Mother</label>
+        <div class="col-md-10">
+            <select id="mother" name="mother" class="form-control" ng-options="rc.name for rc in references.mother track by rc.id" ng-model="currentRecord.mother"></select>
+        </div>
+    </div>
+    <div class="form-group col-md-12" ng-class="{'has-success': animalForm.breed.$valid && animalForm.breed.$dirty, 'has-error': animalForm.breed.$invalid && animalForm.breed.$dirty}" >
+        <label for="breed" class="col-md-2 control-label">Breed</label>
+        <div class="col-md-10">
+            <select id="breed" name="breed" class="form-control" ng-options="rc.name for rc in references.breed track by rc.id" ng-model="currentRecord.breed"></select>
+        </div>
+    </div>
+    <div class="form-group col-md-12" ng-class="{'has-success': animalForm.father.$valid && animalForm.father.$dirty, 'has-error': animalForm.father.$invalid && animalForm.father.$dirty}" >
+        <label for="father" class="col-md-2 control-label">Father</label>
+        <div class="col-md-10">
+            <select id="father" name="father" class="form-control" ng-options="rc.name for rc in references.father track by rc.id" ng-model="currentRecord.father"></select>
+        </div>
+    </div>
     </fieldset>
 </form>

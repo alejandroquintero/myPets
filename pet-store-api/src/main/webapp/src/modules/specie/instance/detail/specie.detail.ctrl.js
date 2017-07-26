@@ -25,8 +25,9 @@ SOFTWARE.
 
     var mod = ng.module("specieModule");
 
-    mod.controller("specieDetailCtrl", ['$scope', "$state", "specie",
-        function ($scope, $state, specie) {
+    mod.controller("specieDetailCtrl", ['$scope', "$state", "specie","model",
+        function ($scope, $state, specie,model) {
+            $scope.model = model;
             $scope.currentRecord = specie;
             $scope.actions = {
                 create: {

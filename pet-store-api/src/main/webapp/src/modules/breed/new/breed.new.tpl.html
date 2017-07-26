@@ -35,6 +35,42 @@ SOFTWARE.
 </header>
 <form novalidate name="breedForm" role="form">
     <fieldset>
-        <crud-form fields='model.fields' record='currentRecord' lists-of-values="references"></crud-form>
+    <input id="id" class="form-control" type="hidden" ng-model="currentRecord.id"/>
+    <div class="form-group col-md-12" ng-class="{'has-success': breedForm.name.$valid && breedForm.name.$dirty, 'has-error': breedForm.name.$invalid && breedForm.name.$dirty}" >
+        <label for="name" class="col-md-2 control-label">Name</label>
+        <div class="col-md-10">
+            <input id="name" name="name" class="form-control" type="text" ng-model="currentRecord.name" ng-required="true" />
+        </div>
+    </div>
+    <div class="form-group col-md-12" ng-class="{'has-success': breedForm.description.$valid && breedForm.description.$dirty, 'has-error': breedForm.description.$invalid && breedForm.description.$dirty}" >
+        <label for="description" class="col-md-2 control-label">Description</label>
+        <div class="col-md-10">
+            <input id="description" name="description" class="form-control" type="text" ng-model="currentRecord.description" ng-required="true" />
+        </div>
+    </div>
+    <div class="form-group col-md-12" ng-class="{'has-success': breedForm.mood.$valid && breedForm.mood.$dirty, 'has-error': breedForm.mood.$invalid && breedForm.mood.$dirty}" >
+        <label for="mood" class="col-md-2 control-label">Mood</label>
+        <div class="col-md-10">
+            <input id="mood" name="mood" class="form-control" type="text" ng-model="currentRecord.mood" ng-required="true" />
+        </div>
+    </div>
+    <div class="form-group col-md-12" ng-class="{'has-success': breedForm.size.$valid && breedForm.size.$dirty, 'has-error': breedForm.size.$invalid && breedForm.size.$dirty}" >
+        <label for="size" class="col-md-2 control-label">Size</label>
+        <div class="col-md-10">
+            <input id="size" name="size" class="form-control" type="text" ng-model="currentRecord.size" ng-required="true" />
+        </div>
+    </div>
+    <div class="form-group col-md-12" ng-class="{'has-success': breedForm.lifeExpectancy.$valid && breedForm.lifeExpectancy.$dirty, 'has-error': breedForm.lifeExpectancy.$invalid && breedForm.lifeExpectancy.$dirty}" >
+        <label for="lifeExpectancy" class="col-md-2 control-label">LifeExpectancy</label>
+        <div class="col-md-10">
+            <input id="lifeExpectancy" name="lifeExpectancy" class="form-control" type="number" ng-model="currentRecord.lifeExpectancy" ng-required="true" />
+        </div>
+    </div>
+    <div class="form-group col-md-12" ng-class="{'has-success': breedForm.specie.$valid && breedForm.specie.$dirty, 'has-error': breedForm.specie.$invalid && breedForm.specie.$dirty}" >
+        <label for="specie" class="col-md-2 control-label">Specie</label>
+        <div class="col-md-10">
+            <select id="specie" name="specie" class="form-control" ng-options="rc.name for rc in references.specie track by rc.id" ng-model="currentRecord.specie"></select>
+        </div>
+    </div>
     </fieldset>
 </form>

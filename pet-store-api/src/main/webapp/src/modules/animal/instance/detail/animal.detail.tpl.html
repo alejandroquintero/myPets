@@ -28,6 +28,10 @@ SOFTWARE.
 <div  class="container-fluid well">
     <div class="col-md-12">
         <p>
+            <label><strong>Name: </strong></label>
+            <span id="name">{{currentRecord.name}}</span>
+        </p>
+        <p>
             <label><strong>BirthDate: </strong></label>
             <span id="birthDate">{{currentRecord.birthDate | date}}</span>
         </p>
@@ -40,6 +44,12 @@ SOFTWARE.
             <span id="gender">{{currentRecord.gender}}</span>
         </p>
         <p>
+            <label><strong>Mother: </strong></label>
+            <span id="mother">
+                {{currentRecord.mother.name}}
+            </span>
+        </p>
+        <p>
             <label><strong>Breed: </strong></label>
             <span id="breed">
                 {{currentRecord.breed.name}}
@@ -49,12 +59,6 @@ SOFTWARE.
             <label><strong>Father: </strong></label>
             <span id="father">
                 {{currentRecord.father.name}}
-            </span>
-        </p>
-        <p>
-            <label><strong>Mother: </strong></label>
-            <span id="mother">
-                {{currentRecord.mother.name}}
             </span>
         </p>
     </div>

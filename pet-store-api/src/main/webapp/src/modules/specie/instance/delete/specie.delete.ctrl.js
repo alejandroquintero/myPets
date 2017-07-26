@@ -25,8 +25,9 @@ SOFTWARE.
 
     var mod = ng.module("specieModule");
 
-    mod.controller("specieDeleteCtrl", ["$state", "specie", function ($state, specie) {
-            this.confirmDelete = function () {
+    mod.controller("specieDeleteCtrl", ["$state", "specie","model","$scope", function ($state, specie,model,$scope) {
+           $scope.model = model;
+             this.confirmDelete = function () {
                 specie.remove().then(function () {
                     $state.go('specieList', null, {reload: true});
                 });

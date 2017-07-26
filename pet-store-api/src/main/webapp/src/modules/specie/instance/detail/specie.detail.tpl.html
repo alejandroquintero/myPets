@@ -22,16 +22,16 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 -->
 <header>
-  <div ncy-breadcrumb></div>
-  <toolbar name="model.name" display-name="model.displayName" actions='actions'></toolbar>
+    <div ncy-breadcrumb></div>
+    <toolbar name="model.name" display-name="model.displayName" actions='actions'></toolbar>
 </header>
 <div  class="container-fluid well">
-  <div class="col-md-12">
-    <p>
-      <strong>Name:</strong>
-      <span>{{currentRecord.name}}</span>
-    </p>
-  </div>
+    <div class="col-md-12">
+        <p>
+            <label><strong>Name: </strong></label>
+            <span id="name">{{currentRecord.name}}</span>
+        </p>
+    </div>
 </div>
 <div ui-view="specieChieldView"></div>
 <!-- TODO -->

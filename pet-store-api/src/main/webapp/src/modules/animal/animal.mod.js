@@ -29,6 +29,12 @@ SOFTWARE.
         displayName: 'Animal',
         url: 'animals',
         fields: {
+            name: {
+                
+                displayName: 'Animals',
+                type:  'String',
+                required:false
+            },
             birthDate: {
                 
                 displayName: 'Birth Date',
@@ -47,6 +53,13 @@ SOFTWARE.
                 type:  'String',
                 required:false
             },
+            mother: {
+                displayName:  'Mother',
+                type: 'Reference',
+                model: 'animalModel',
+                options: [],
+                required: false
+            },
             breed: {
                 displayName:  'Breed',
                 type: 'Reference',
@@ -56,13 +69,6 @@ SOFTWARE.
             },
             father: {
                 displayName:  'Father',
-                type: 'Reference',
-                model: 'animalModel',
-                options: [],
-                required: false
-            },
-            mother: {
-                displayName:  'Mother',
                 type: 'Reference',
                 model: 'animalModel',
                 options: [],
@@ -88,9 +94,9 @@ SOFTWARE.
                 resolve: {
                     references: ['$q', 'Restangular', function ($q, r) {
                             return $q.all({
-                                breed: r.all('breeds').getList()
+                                mother: r.all('animals').getList()
+,                                 breed: r.all('breeds').getList()
 ,                                 father: r.all('animals').getList()
-,                                 mother: r.all('animals').getList()
                             });
                         }],
                     model: 'animalModel',
@@ -108,7 +114,9 @@ SOFTWARE.
                         controller: 'animalListCtrl',
                         controllerAs: 'ctrl'
                     }
-                },
+                },resolve:{
+						model: 'animalModel'
+					},
                      ncyBreadcrumb: {
                                 label: 'animal'
                            }
@@ -123,6 +131,9 @@ SOFTWARE.
                         controllerAs: 'ctrl'
                     }
                 },
+                  resolve:{
+						model: 'animalModel'
+					},
                      ncyBreadcrumb: {
                                 parent :'animalList', 
                                 label: 'new'
@@ -152,6 +163,9 @@ SOFTWARE.
                         controller: 'animalDetailCtrl'
                     }
                 },
+                  resolve:{
+						model: 'animalModel'
+					},
                      ncyBreadcrumb: {
                                 parent :'animalList', 
                                 label: 'details'
@@ -168,9 +182,12 @@ SOFTWARE.
                         controllerAs: 'ctrl'
                     }
                 },
+                  resolve:{
+						model: 'animalModel'
+					},
                      ncyBreadcrumb: {
                                 parent :'animalDetail', 
-                                label: 'new'
+                                label: 'edit'
                            }
             });
             $sp.state('animalDelete', {
@@ -182,7 +199,10 @@ SOFTWARE.
                         controller: 'animalDeleteCtrl',
                         controllerAs: 'ctrl'
                     }
-                }
+                },
+                  resolve:{
+						model: 'animalModel'
+					}
             });
 	}]);
 })(window.angular);
