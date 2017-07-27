@@ -36,6 +36,7 @@ import com.mashape.unirest.http.exceptions.UnirestException;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.text.ParseException;
 import java.util.concurrent.ExecutionException;
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.drone.api.annotation.Drone;
@@ -119,7 +120,7 @@ public class AnimalIT {
 
     @Test
     @InSequence(1)
-    public void createAnimal(@InitialPage AnimalListPage listPage) {
+    public void createAnimal(@InitialPage AnimalListPage listPage) throws ParseException {
         Integer expected = 0;
         Assert.assertEquals(expected, listPage.countAnimals());
 
@@ -130,12 +131,12 @@ public class AnimalIT {
 
         AnimalDTO actual_animal = detailPage.getData();
 
-        Assert.assertEquals(expected_animal.getName(), actual_animal.getName());
+        Assert.assertEquals(expected_animal.getColor(), actual_animal.getColor());
     }
 
     @Test
     @InSequence(2)
-    public void editAnimal(@InitialPage AnimalListPage listPage) {
+    public void editAnimal(@InitialPage AnimalListPage listPage) throws ParseException {
         AnimalDTO expected_animal = factory.manufacturePojo(AnimalDTO.class);
 
         listPage.editAnimal(0);
@@ -143,7 +144,7 @@ public class AnimalIT {
         editPage.saveAnimal(expected_animal);
 
         AnimalDTO actual_animal = detailPage.getData();
-
+       
         Assert.assertEquals(expected_animal.getName(), actual_animal.getName());
     }
 
