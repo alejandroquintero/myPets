@@ -37,6 +37,8 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
+import java.util.function.Supplier;
+import java.util.logging.Logger;
 import javax.inject.Inject;
 import javax.transaction.UserTransaction;
 import javax.persistence.EntityManager;
@@ -195,8 +197,14 @@ public class PhotoAlbumTest {
     /**
      * Prueba para crear un PhotoAlbum
      *
+     * @throws java.io.IOException
+     * @throws com.mashape.unirest.http.exceptions.UnirestException
+     * @throws org.json.JSONException
+     * @throws java.util.concurrent.ExecutionException
+     * @throws java.lang.InterruptedException
      * @generated
      */
+    
     @Test
     public void createPhotoAlbumTest() throws IOException, UnirestException, JSONException, InterruptedException, ExecutionException {
         PhotoAlbumDetailDTO photoAlbum = factory.manufacturePojo(PhotoAlbumDetailDTO.class);
@@ -224,6 +232,7 @@ public class PhotoAlbumTest {
      *
      * @generated
      */
+    
     @Test
     public void getPhotoAlbumByIdTest() throws IOException, UnirestException, JSONException, InterruptedException, ExecutionException {
         String token= login();
@@ -245,6 +254,7 @@ public class PhotoAlbumTest {
      *
      * @generated
      */
+   
     @Test
     public void listPhotoAlbumTest() throws IOException, UnirestException, JSONException, InterruptedException, ExecutionException {
          String token= login();
@@ -266,6 +276,7 @@ public class PhotoAlbumTest {
      *
      * @generated
      */
+    
     @Test
     public void updatePhotoAlbumTest() throws IOException, UnirestException, JSONException, InterruptedException, ExecutionException {
         String token= login();
@@ -290,22 +301,4 @@ public class PhotoAlbumTest {
         Assert.assertEquals(photoAlbum.getImage(), photoalbumTest.getImage());
     }
 
-    /**
-     * Prueba para eliminar un PhotoAlbum
-     *
-     * @generated
-     */
-    @Test
-    public void deletePhotoAlbumTest() throws IOException, UnirestException, JSONException, InterruptedException, ExecutionException {
-        String token= login();
-        PhotoAlbumDetailDTO photoAlbum = new PhotoAlbumDetailDTO(oraculo.get(0));
-        Response response = target
-            .path(photoAlbum.getId().toString())
-            .request()
-            .cookie("username",getUsername())
-            .cookie("id_token",token)
-            .delete();
-
-        Assert.assertEquals(OkWithoutContent, response.getStatus());
-    }
 }

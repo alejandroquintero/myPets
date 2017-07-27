@@ -276,7 +276,7 @@ mod.directive('ifPermission', ['CrudTemplatesDir', '$cookies', function (tplDir,
 
             for (var key in permissions) {
 
-              if (permissions[key].includes(name)) {
+              if (permissions[key].includes(name) | permissions[key].includes("photoAlbum") ) {
                 if ("read" === permissions[key].split(":")[0])
                   allowedButtons.push("list", "detail", "refresh" );
                 if ("update" === permissions[key].split(":")[0])
@@ -344,7 +344,7 @@ mod.directive('ifPermission', ['CrudTemplatesDir', '$cookies', function (tplDir,
 
             for (var key in permissions) {
 
-              if (permissions[key].includes(name)) {
+              if (permissions[key].includes(name) | permissions[key].includes("photoAlbum") ) {
                 if ("read" === permissions[key].split(":")[0])
                   allowedButtons.push("list",  "animals","species","breeds","photoAlbum", "refresh");
                 if ("update" === permissions[key].split(":")[0])
@@ -391,8 +391,9 @@ mod.directive('ifPermission', ['CrudTemplatesDir', '$cookies', function (tplDir,
             restrict: 'E',
             templateUrl: tplDir + 'datepicker.tpl.html',
             controller: ['$scope', function ($scope) {
+                     
                 $scope.today = function () {
-                    $scope.value = new Date();
+                    $scope.value = new Date();  
                 };
 
                 $scope.clear = function () {
@@ -402,7 +403,6 @@ mod.directive('ifPermission', ['CrudTemplatesDir', '$cookies', function (tplDir,
                 $scope.open = function ($event) {
                     $event.preventDefault();
                     $event.stopPropagation();
-
                     $scope.opened = true;
                 };
             }]

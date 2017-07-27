@@ -29,8 +29,7 @@ SOFTWARE.
         displayName: 'Animal',
         url: 'animals',
         fields: {
-            name: {
-                
+            name: {   
                 displayName: 'Animals',
                 type:  'String',
                 required:false

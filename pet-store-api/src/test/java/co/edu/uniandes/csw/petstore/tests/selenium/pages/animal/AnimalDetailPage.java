@@ -27,6 +27,11 @@ import co.edu.uniandes.csw.petstore.dtos.minimum.AnimalDTO;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import java.sql.Date;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Locale;
+import org.openqa.selenium.support.FindBys;
 
 public class AnimalDetailPage {
 
@@ -61,12 +66,38 @@ public class AnimalDetailPage {
         deleteBtn.click();
     }
 
-    public AnimalDTO getData() {
-        AnimalDTO animal = new AnimalDTO();        
-        animal.setName(this.name.getText());        
-        animal.setBirthDate(Date.valueOf(this.birthDate.getText()));
+    public AnimalDTO getData() throws ParseException {
+        
+        AnimalDTO animal = new AnimalDTO();  
+      //  Date dat = Date.valueOf(this.birthDate.getText());
+      String g = this.birthDate.getText();    
+        animal.setName(this.name.getText());
+        Date date = Date.valueOf(getDateformat(this.birthDate.getText()));
+        animal.setBirthDate(date);
         animal.setColor(this.color.getText());        
         animal.setGender(this.gender.getText());        
         return animal;
     }
+    
+    
+   private String getDateformat(String rawFormat){
+       String month="";
+       String rawFormatMonth = (rawFormat.split(",")[0].split(" ")[0]).trim();
+   switch(rawFormatMonth){
+       case "Jan" : month="01"; break;
+       case "Feb" : month="02"; break;
+       case "Mar" : month="03"; break;
+       case "Apr" : month="04"; break;
+       case "May" : month="05"; break;
+       case "Jun" : month="06"; break;
+       case "Jul" : month="07"; break;
+       case "Aug" : month="08"; break;
+       case "Sep" : month="09"; break;
+       case "Oct" : month="10"; break;
+       case "Nov" : month="11"; break;
+       case "Dec" : month="12"; break;
+       default: month="invalid month"; break;
+   }
+   return rawFormat.split(",")[1].trim()+"-"+month+"-"+rawFormat.split(",")[0].split(" ")[1].trim();
+   }
 }

@@ -24,16 +24,19 @@ SOFTWARE.
 package co.edu.uniandes.csw.petstore.tests.selenium.pages.animal;
 
 import co.edu.uniandes.csw.petstore.dtos.minimum.AnimalDTO;
+import java.util.List;
 import static org.jboss.arquillian.graphene.Graphene.guardAjax;
 import static org.jboss.arquillian.graphene.Graphene.waitGui;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.FindBys;
 
 public class AnimalEditPage {
 
     @FindBy(id = "name")
     private WebElement nameInput;
-    @FindBy(id = "birthDate")
+    @FindBy(id = "birthdate")
     private WebElement birthDateInput;
     @FindBy(id = "color")
     private WebElement colorInput;
@@ -45,14 +48,18 @@ public class AnimalEditPage {
 
     @FindBy(id = "cancel-animal")
     private WebElement cancelBtn;
+    
+    @FindBys({@FindBy(tagName= "table")})
+    private WebElement datePicker;
 
     public void saveAnimal(AnimalDTO animal) {
          waitGui().until().element(nameInput).is().visible();
          nameInput.clear();
          nameInput.sendKeys(animal.getName());
          waitGui().until().element(birthDateInput).is().visible();
-         birthDateInput.clear();
-         birthDateInput.sendKeys(animal.getBirthDate().toString());
+         birthDateInput.click();
+          List<WebElement> columns =datePicker.findElements(By.tagName("td"));
+          columns.get(21).click();
          waitGui().until().element(colorInput).is().visible();
          colorInput.clear();
          colorInput.sendKeys(animal.getColor());
