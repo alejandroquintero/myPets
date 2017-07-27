@@ -86,7 +86,7 @@
 (function (ng) {
     var mod = ng.module('ngCrud', ['restangular', 'ui.bootstrap']);
 
-    mod.constant('CrudTemplatesDir', 'src/modules/directives/templates/');
+    mod.constant('CrudTemplatesDir', 'src/directives/templates/');
 
 })(window.angular);
 
