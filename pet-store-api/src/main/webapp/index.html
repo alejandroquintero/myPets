@@ -142,9 +142,6 @@ SOFTWARE.
                                     Species
                                   </button>
                                   <ul class="dropdown-menu" aria-labelledby="specieDropdown">
-                                    <li>
-                                      <a ui-sref="specieList({page: 1, limit: 15})">Species List</a>
-                                    </li>
                                     <li ng-repeat="specie in species">
                                       <a ui-sref="specieDetail({specieId:specie.id})">{{specie.name}}</a>
                                     </li>
