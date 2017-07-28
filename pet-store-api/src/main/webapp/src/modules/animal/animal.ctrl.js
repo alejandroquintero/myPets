@@ -35,35 +35,40 @@ SOFTWARE.
             };
 
             Restangular.setErrorInterceptor(function(response, deferred, responseHandler) {
+               
                 switch(response.status) {
                     case 400:
-                        $scope.showError('Error 400: La solicitud contiene sintaxis err�nea.');
+                        $scope.showError(response.data);
                         return false; 
                         break;
                     case 401:
-                        $scope.showError('Error 401: No autorizado.');
+                        $scope.showError(response.data);
                         return false; 
                         break;
                     case 403:
-                        $scope.showError('Error 403: No autorizado.');
+                        $scope.showError(response.data);
                         return false; 
                         break;
                     case 404:
-                        $scope.showError('Error 404: Recurso no encontrado.');
+                        $scope.showError(response.data);
                         return false; 
                         break;
                     case 413:
-                        $scope.showError('Error 413: Petici�n demasiado grande.');
+                        $scope.showError(response.data);
                         return false; 
                         break;
                     case 500:
-                        $scope.showError('Error 500: Error interno del servidor.');
+                        $scope.showError(response.data);
                         return false; 
                         break;
                     case 503:
-                        $scope.showError('Error 503: Servicio no disponible.');
+                        $scope.showError(response.data);
                         return false; 
                         break;  
+                    case 412:
+                        $scope.showError(response.data);
+                        return false; 
+                        break;      
                 }
 
                 return true; // error not handled

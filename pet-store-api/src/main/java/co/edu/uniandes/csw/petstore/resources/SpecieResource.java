@@ -41,6 +41,7 @@ import javax.ws.rs.core.MediaType;
 import co.edu.uniandes.csw.petstore.api.ISpecieLogic;
 import co.edu.uniandes.csw.petstore.dtos.detail.SpecieDetailDTO;
 import co.edu.uniandes.csw.petstore.entities.SpecieEntity;
+import co.edu.uniandes.csw.petstore.exceptions.BusinessLogicException;
 import java.util.ArrayList;
 import javax.ws.rs.WebApplicationException;
 
@@ -108,11 +109,13 @@ public class SpecieResource {
      *
      * @param dto Objeto de SpecieDetailDTO con los datos nuevos
      * @return Objeto de SpecieDetailDTOcon los datos nuevos y su ID
+     * @throws co.edu.uniandes.csw.petstore.exceptions.BusinessLogicException
      * @generated
      */
     @POST
     @StatusCreated
-    public SpecieDetailDTO createSpecie(SpecieDetailDTO dto) {
+    public SpecieDetailDTO createSpecie(SpecieDetailDTO dto) throws BusinessLogicException {
+        isDuplicated(dto);
         return new SpecieDetailDTO(specieLogic.createSpecie(dto.toEntity()));
     }
 
@@ -158,5 +161,9 @@ public class SpecieResource {
         existsSpecie(speciesId);
         return SpecieBreedsResource.class;
     }
-    
+     public void isDuplicated(SpecieDetailDTO dto) throws BusinessLogicException{
+   for(SpecieEntity ae:specieLogic.getSpecies())
+       if(ae.getName().equals(dto.getName()))
+           throw new BusinessLogicException("la especie ya existe");      
+   }
 }
