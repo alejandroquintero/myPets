@@ -28,9 +28,9 @@ import co.edu.uniandes.csw.petstore.api.IAnimalLogic;
 import co.edu.uniandes.csw.petstore.entities.AnimalEntity;
 import co.edu.uniandes.csw.petstore.persistence.AnimalPersistence;
 import co.edu.uniandes.csw.petstore.entities.AnimalEntity;
+import co.edu.uniandes.csw.petstore.entities.BreedEntity;
 import co.edu.uniandes.csw.petstore.entities.PhotoAlbumEntity;
 import co.edu.uniandes.csw.petstore.entities.AnimalEntity;
-import co.edu.uniandes.csw.petstore.entities.BreedEntity;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Date;
@@ -136,8 +136,8 @@ public class AnimalLogicTest {
         em.createQuery("delete from PhotoAlbumEntity").executeUpdate();
         em.createQuery("delete from AnimalEntity").executeUpdate();
         em.createQuery("delete from AnimalEntity").executeUpdate();
-        em.createQuery("delete from AnimalEntity").executeUpdate();
         em.createQuery("delete from BreedEntity").executeUpdate();
+        em.createQuery("delete from AnimalEntity").executeUpdate();
     }
 
     /**

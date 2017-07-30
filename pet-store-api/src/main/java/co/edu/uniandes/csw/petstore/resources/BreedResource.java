@@ -41,9 +41,9 @@ import javax.ws.rs.core.MediaType;
 import co.edu.uniandes.csw.petstore.api.IBreedLogic;
 import co.edu.uniandes.csw.petstore.dtos.detail.BreedDetailDTO;
 import co.edu.uniandes.csw.petstore.entities.BreedEntity;
-import co.edu.uniandes.csw.petstore.exceptions.BusinessLogicException;
 import java.util.ArrayList;
 import javax.ws.rs.WebApplicationException;
+import co.edu.uniandes.csw.petstore.exceptions.BusinessLogicException;
 
 /**
  * URI: breeds/
@@ -109,13 +109,11 @@ public class BreedResource {
      *
      * @param dto Objeto de BreedDetailDTO con los datos nuevos
      * @return Objeto de BreedDetailDTOcon los datos nuevos y su ID
-     * @throws co.edu.uniandes.csw.petstore.exceptions.BusinessLogicException
      * @generated
      */
     @POST
     @StatusCreated
-    public BreedDetailDTO createBreed(BreedDetailDTO dto) throws BusinessLogicException {
-        isDuplicated(dto);
+    public BreedDetailDTO createBreed(BreedDetailDTO dto) {
         return new BreedDetailDTO(breedLogic.createBreed(dto.toEntity()));
     }
 
@@ -161,9 +159,6 @@ public class BreedResource {
         existsBreed(breedsId);
         return BreedAnimalResource.class;
     }
-     public void isDuplicated(BreedDetailDTO dto) throws BusinessLogicException{
-   for(BreedEntity ae:breedLogic.getBreeds())
-       if(ae.getName().equals(dto.getName()))
-           throw new BusinessLogicException("la raza ya existe");      
-   }
+    
+
 }

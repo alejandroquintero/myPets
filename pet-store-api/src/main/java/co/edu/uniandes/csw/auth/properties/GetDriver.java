@@ -5,11 +5,13 @@
  */
 package co.edu.uniandes.csw.auth.properties;
 
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.net.URL;
 import java.nio.channels.Channels;
 import java.nio.channels.ReadableByteChannel;
@@ -26,16 +28,43 @@ import java.util.zip.ZipInputStream;
 public class GetDriver {
 
     public static void main(String[] args) throws IOException {
-         
+
+                String s="";
+        String prop = System.getProperty("user.dir");
+        // using the Runtime exec method:
+        
+        Process p;
+            p = Runtime.getRuntime().exec("setx AUTH0_PROPERTIES "+prop+"\\src\\main\\java\\co\\edu\\uniandes\\csw\\auth\\properties\\auth0.properties");
+
+        BufferedReader stdInput = new BufferedReader(new
+             InputStreamReader(p.getInputStream()));
+
+        BufferedReader stdError = new BufferedReader(new
+             InputStreamReader(p.getErrorStream()));
+
+        // read the output from the command
+        System.out.println("Here is the standard output of the command:\n");
+        while ((s = stdInput.readLine()) != null) {
+            System.out.println(s);
+        }
+       // read any errors from the attempted command
+        System.out.println("Here is the standard error of the command (if any):\n");
+        while ((s = stdError.readLine()) != null) {
+            System.out.println(s);
+        }  
+        
+      
         URL website = new URL("https://chromedriver.storage.googleapis.com/2.30/chromedriver_win32.zip");
         ReadableByteChannel rbc = Channels.newChannel(website.openStream());
         FileOutputStream fos = new FileOutputStream("chromeDriv.zip");
         fos.getChannel().transferFrom(rbc, 0, Long.MAX_VALUE);
         fos.close();
         String zipFilePath = "chromeDriv.zip";
-        String destDir = "pet-store-api/drivers";
-        try {
+        String destDir = "drivers";
+
+         try {
             unzip(zipFilePath, destDir);
+         
         } catch (Exception ex) {
             System.out.println("file already exist");
         }

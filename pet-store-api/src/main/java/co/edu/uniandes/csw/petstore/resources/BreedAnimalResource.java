@@ -146,4 +146,5 @@ public class BreedAnimalResource {
     public void removeAnimal(@PathParam("breedsId") Long breedsId, @PathParam("animalId") Long animalId) {
         breedLogic.removeAnimal(breedsId, animalId);
     }
+
 }

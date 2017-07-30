@@ -116,7 +116,7 @@ public class PhotoAlbumResource {
      */
     @POST
     @StatusCreated
-    public PhotoAlbumDetailDTO createPhotoAlbum(PhotoAlbumDetailDTO dto) {
+    public PhotoAlbumDetailDTO createPhotoAlbum(PhotoAlbumDetailDTO dto)  {
         return new PhotoAlbumDetailDTO(photoAlbumLogic.createPhotoAlbum(animalsId, dto.toEntity()));
     }
 
@@ -148,4 +148,6 @@ public class PhotoAlbumResource {
         photoAlbumLogic.deletePhotoAlbum(photoAlbumId);
     }
     
+
+
 }

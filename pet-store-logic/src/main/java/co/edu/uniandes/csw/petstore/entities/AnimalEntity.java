@@ -56,8 +56,12 @@ public class AnimalEntity extends BaseEntity implements Serializable {
 
     @PodamExclude
     @ManyToOne
-    @JoinTable(name = "Animal_FATHER")
-    private AnimalEntity father;
+    @JoinTable(name = "Animal_MOTHER")
+    private AnimalEntity mother;
+
+    @PodamExclude
+    @ManyToOne
+    private BreedEntity breed;
 
     @PodamExclude
     @OneToMany(mappedBy = "animal", cascade = CascadeType.REMOVE)
@@ -65,12 +69,8 @@ public class AnimalEntity extends BaseEntity implements Serializable {
 
     @PodamExclude
     @ManyToOne
-    @JoinTable(name = "Animal_MOTHER")
-    private AnimalEntity mother;
-
-    @PodamExclude
-    @ManyToOne
-    private BreedEntity breed;
+    @JoinTable(name = "Animal_FATHER")
+    private AnimalEntity father;
 
     /**
      * Obtiene el atributo birthDate.
@@ -133,26 +133,6 @@ public class AnimalEntity extends BaseEntity implements Serializable {
     }
 
     /**
-     * Obtiene el atributo father.
-     *
-     * @return atributo father.
-     * @generated
-     */
-    public AnimalEntity getFather() {
-        return father;
-    }
-
-    /**
-     * Establece el valor del atributo father.
-     *
-     * @param father nuevo valor del atributo
-     * @generated
-     */
-    public void setFather(AnimalEntity father) {
-        this.father = father;
-    }
-
-    /**
      * Obtiene el atributo mother.
      *
      * @return atributo mother.
@@ -190,6 +170,26 @@ public class AnimalEntity extends BaseEntity implements Serializable {
      */
     public void setBreed(BreedEntity breed) {
         this.breed = breed;
+    }
+
+    /**
+     * Obtiene el atributo father.
+     *
+     * @return atributo father.
+     * @generated
+     */
+    public AnimalEntity getFather() {
+        return father;
+    }
+
+    /**
+     * Establece el valor del atributo father.
+     *
+     * @param father nuevo valor del atributo
+     * @generated
+     */
+    public void setFather(AnimalEntity father) {
+        this.father = father;
     }
 
     /**

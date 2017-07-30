@@ -36,11 +36,11 @@ public class AnimalDetailDTO extends AnimalDTO{
 
 
     @PodamExclude
-    private AnimalDTO father;
-    @PodamExclude
     private AnimalDTO mother;
     @PodamExclude
     private BreedDTO breed;
+    @PodamExclude
+    private AnimalDTO father;
 
     /**
      * @generated
@@ -57,14 +57,14 @@ public class AnimalDetailDTO extends AnimalDTO{
      */
     public AnimalDetailDTO(AnimalEntity entity) {
         super(entity);
-        if (entity.getFather()!=null){
-        this.father = new AnimalDTO(entity.getFather());
-        }
         if (entity.getMother()!=null){
         this.mother = new AnimalDTO(entity.getMother());
         }
         if (entity.getBreed()!=null){
         this.breed = new BreedDTO(entity.getBreed());
+        }
+        if (entity.getFather()!=null){
+        this.father = new AnimalDTO(entity.getFather());
         }
         
     }
@@ -78,36 +78,16 @@ public class AnimalDetailDTO extends AnimalDTO{
     @Override
     public AnimalEntity toEntity() {
         AnimalEntity entity = super.toEntity();
-        if (this.getFather()!=null){
-        entity.setFather(this.getFather().toEntity());
-        }
         if (this.getMother()!=null){
         entity.setMother(this.getMother().toEntity());
         }
         if (this.getBreed()!=null){
         entity.setBreed(this.getBreed().toEntity());
         }
+        if (this.getFather()!=null){
+        entity.setFather(this.getFather().toEntity());
+        }
         return entity;
-    }
-
-    /**
-     * Obtiene el atributo father.
-     *
-     * @return atributo father.
-     * @generated
-     */
-    public AnimalDTO getFather() {
-        return father;
-    }
-
-    /**
-     * Establece el valor del atributo father.
-     *
-     * @param father nuevo valor del atributo
-     * @generated
-     */
-    public void setFather(AnimalDTO father) {
-        this.father = father;
     }
 
     /**
@@ -148,6 +128,26 @@ public class AnimalDetailDTO extends AnimalDTO{
      */
     public void setBreed(BreedDTO breed) {
         this.breed = breed;
+    }
+
+    /**
+     * Obtiene el atributo father.
+     *
+     * @return atributo father.
+     * @generated
+     */
+    public AnimalDTO getFather() {
+        return father;
+    }
+
+    /**
+     * Establece el valor del atributo father.
+     *
+     * @param father nuevo valor del atributo
+     * @generated
+     */
+    public void setFather(AnimalDTO father) {
+        this.father = father;
     }
 
 }

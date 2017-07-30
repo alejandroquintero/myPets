@@ -41,9 +41,9 @@ import javax.ws.rs.core.MediaType;
 import co.edu.uniandes.csw.petstore.api.IAnimalLogic;
 import co.edu.uniandes.csw.petstore.dtos.detail.AnimalDetailDTO;
 import co.edu.uniandes.csw.petstore.entities.AnimalEntity;
-import co.edu.uniandes.csw.petstore.exceptions.BusinessLogicException;
 import java.util.ArrayList;
 import javax.ws.rs.WebApplicationException;
+import co.edu.uniandes.csw.petstore.exceptions.BusinessLogicException;
 
 /**
  * URI: animals/
@@ -109,13 +109,12 @@ public class AnimalResource {
      *
      * @param dto Objeto de AnimalDetailDTO con los datos nuevos
      * @return Objeto de AnimalDetailDTOcon los datos nuevos y su ID
-     * @throws co.edu.uniandes.csw.petstore.exceptions.BusinessLogicException
      * @generated
      */
     @POST
     @StatusCreated
-    public AnimalDetailDTO createAnimal(AnimalDetailDTO dto) throws BusinessLogicException {
-        isDuplicated(dto);
+    public AnimalDetailDTO createAnimal(AnimalDetailDTO dto)throws BusinessLogicException  {
+           isDuplicated(dto);
         return new AnimalDetailDTO(animalLogic.createAnimal(dto.toEntity()));
     }
 
@@ -153,19 +152,17 @@ public class AnimalResource {
         }
     }
     
+    
     @Path("{animalsId: \\d+}/photoAlbum")
     public Class<PhotoAlbumResource> getPhotoAlbumResource(@PathParam("animalsId") Long animalsId){
         existsAnimal(animalsId);
         return PhotoAlbumResource.class;
     }
-   public void tooManyAnimals() throws BusinessLogicException{
-        if(animalLogic.getAnimals().size()>5)
-            throw new BusinessLogicException("Para poder agregar mas animales, adquiera una cuenta premium");      
-    }
-    public void isDuplicated(AnimalDetailDTO dto) throws BusinessLogicException{
+    
+
+   public void isDuplicated(AnimalDetailDTO dto) throws BusinessLogicException{
    for(AnimalEntity ae:animalLogic.getAnimals())
        if(ae.getName().equals(dto.getName()))
-           throw new BusinessLogicException("el animal ya existe");      
+           throw new BusinessLogicException("el nombre de Animal ya existe");      
    }
-    
 }
