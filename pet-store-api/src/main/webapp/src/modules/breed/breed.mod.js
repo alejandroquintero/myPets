@@ -26,45 +26,45 @@ SOFTWARE.
 
     mod.constant('breedModel', {
         name: 'breed',
-        displayName: 'Breed',
+        displayName: 'Raza',
         url: 'breeds',
         fields: {
             name: {
                 
-                displayName: 'Name',
+                displayName: 'Nombre',
                 type:  'String',
-                required:false
+                required: true 
             },
             description: {
                 
-                displayName: 'Description',
+                displayName: 'Descripcion',
                 type:  'String',
-                required:false
+                required: true 
             },
             mood: {
                 
-                displayName: 'Mood',
+                displayName: 'Temperamento',
                 type:  'String',
-                required:false
+                required: true 
             },
             size: {
                 
-                displayName: 'Size',
+                displayName: 'Tamano',
                 type:  'String',
-                required:false
+                required: true 
             },
             lifeExpectancy: {
                 
-                displayName: 'Life Expectancy',
+                displayName: 'Esperanza de Vida',
                 type:  'Integer',
-                required:false
+                required: true 
             },
             specie: {
                 displayName:  'Specie',
                 type: 'Reference',
                 model: 'specieModel',
                 options: [],
-                required: false
+                required:  true 
             }        }
     });
 
@@ -104,12 +104,13 @@ SOFTWARE.
                         controller: 'breedListCtrl',
                         controllerAs: 'ctrl'
                     }
-                },resolve:{
-						model: 'breedModel'
+                },
+                 resolve:{
+				   model: 'breedModel'
 					},
-                     ncyBreadcrumb: {
-                                label: 'breed'
-                           }
+                 ncyBreadcrumb: {
+                   label: 'breed'
+                    }
             });
             $sp.state('breedNew', {
                 url: '/new',
@@ -124,10 +125,10 @@ SOFTWARE.
                   resolve:{
 						model: 'breedModel'
 					},
-                     ncyBreadcrumb: {
-                                parent :'breedList', 
-                                label: 'new'
-                           }
+                  ncyBreadcrumb: {
+                        parent :'breedList', 
+                        label: 'new'
+                   }
             });
             $sp.state('breedInstance', {
                 url: '/{breedId:int}',
@@ -156,10 +157,10 @@ SOFTWARE.
                   resolve:{
 						model: 'breedModel'
 					},
-                     ncyBreadcrumb: {
-                                parent :'breedList', 
-                                label: 'details'
-                           }
+                  ncyBreadcrumb: {
+                        parent :'breedList', 
+                        label: 'details'
+                    }
             });
             $sp.state('breedEdit', {
                 url: '/edit',
@@ -175,10 +176,10 @@ SOFTWARE.
                   resolve:{
 						model: 'breedModel'
 					},
-                     ncyBreadcrumb: {
-                                parent :'breedDetail', 
-                                label: 'edit'
-                           }
+                  ncyBreadcrumb: {
+                        parent :'breedDetail', 
+                        label: 'edit'
+                    }
             });
             $sp.state('breedDelete', {
                 url: '/delete',
@@ -191,7 +192,7 @@ SOFTWARE.
                     }
                 },
                   resolve:{
-						model: 'breedModel'
+				      model: 'breedModel'
 					}
             });
             $sp.state('breedAnimal', {

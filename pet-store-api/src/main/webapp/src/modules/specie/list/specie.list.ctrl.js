@@ -29,6 +29,7 @@ SOFTWARE.
         function ($scope, $state, species, $params, model) {
             $scope.model = model;
             $scope.records = species;
+            $scope.buttons = ['detail'];
 
             //Paginación
             this.itemsPerPage = $params.limit;

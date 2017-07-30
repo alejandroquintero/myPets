@@ -29,6 +29,7 @@ SOFTWARE.
         function ($scope, $state, breed,model) {
             $scope.model = model;
             $scope.currentRecord = breed;
+            $scope.buttons = ['detail'];
             $scope.actions = {
                 create: {
                     displayName: 'Create',

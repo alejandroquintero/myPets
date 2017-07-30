@@ -44,12 +44,6 @@ SOFTWARE.
             <span id="gender">{{currentRecord.gender}}</span>
         </p>
         <p>
-            <label><strong>Mother: </strong></label>
-            <span id="mother">
-                {{currentRecord.mother.name}}
-            </span>
-        </p>
-        <p>
             <label><strong>Breed: </strong></label>
             <span id="breed">
                 {{currentRecord.breed.name}}
@@ -61,8 +55,13 @@ SOFTWARE.
                 {{currentRecord.father.name}}
             </span>
         </p>
+        <p>
+            <label><strong>Mother: </strong></label>
+            <span id="mother">
+                {{currentRecord.mother.name}}
+            </span>
+        </p>
     </div>
 </div>
-<gallery name="photoModel.name" fields="photoModel.fields" records="photos" actions="recordActions"></gallery>
 <div ui-view="animalChieldView"></div>
 <!-- TODO -->

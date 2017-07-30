@@ -35,7 +35,6 @@ SOFTWARE.
             };
 
             Restangular.setErrorInterceptor(function(response, deferred, responseHandler) {
-               
                 switch(response.status) {
                     case 400:
                         $scope.showError(response.data);
@@ -68,7 +67,7 @@ SOFTWARE.
                     case 412:
                         $scope.showError(response.data);
                         return false; 
-                        break;      
+                        break; 
                 }
 
                 return true; // error not handled

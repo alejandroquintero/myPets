@@ -66,7 +66,7 @@ SOFTWARE.
                     case 412:
                         $scope.showError(response.data);
                         return false; 
-                        break;  
+                        break; 
                 }
 
                 return true; // error not handled

@@ -25,12 +25,11 @@ SOFTWARE.
 
     var mod = ng.module("animalModule");
 
-    mod.controller("animalDetailCtrl", ['$scope', "$state", "animal","model","photoAlbumModel",
-        function ($scope, $state, animal,model, photoAlbumModel) {
+    mod.controller("animalDetailCtrl", ['$scope', "$state", "animal","model",
+        function ($scope, $state, animal,model) {
             $scope.model = model;
             $scope.currentRecord = animal;
-            $scope.photos = animal.getList(photoAlbumModel.url).$object;
-            $scope.photoModel = photoAlbumModel;
+            $scope.buttons = ['detail','edit'];
             $scope.actions = {
                 create: {
                     displayName: 'Create',
@@ -72,39 +71,6 @@ SOFTWARE.
                     icon: 'link',
                     fn: function () {
                         $state.go('photoAlbumList');
-                    }
-                }
-            };
-            
-            $scope.recordActions = {
-                detail: {
-                    displayName: 'Detail',
-                    icon: 'eye-open',
-                    fn: function (rc) {
-                        $state.go('photoAlbumDetail', {photoAlbumId: rc.id});
-                    },
-                    show: function () {
-                        return true;
-                    }
-                },
-                edit: {
-                    displayName: 'Edit',
-                    icon: 'edit',
-                    fn: function (rc) {
-                        $state.go('photoAlbumEdit', {photoAlbumId: rc.id});
-                    },
-                    show: function () {
-                        return true;
-                    }
-                },
-                delete: {
-                    displayName: 'Delete',
-                    icon: 'minus',
-                    fn: function (rc) {
-                        $state.go('photoAlbumDelete', {photoAlbumId: rc.id});
-                    },
-                    show: function () {
-                        return true;
                     }
                 }
             };

@@ -26,14 +26,14 @@ SOFTWARE.
 
     mod.constant('specieModel', {
         name: 'specie',
-        displayName: 'Specie',
+        displayName: 'Especie',
         url: 'species',
         fields: {
             name: {
                 
-                displayName: 'Name',
+                displayName: 'Nombre',
                 type:  'String',
-                required:false
+                required: true 
             }        }
     });
 
@@ -68,12 +68,13 @@ SOFTWARE.
                         controller: 'specieListCtrl',
                         controllerAs: 'ctrl'
                     }
-                },resolve:{
-						model: 'specieModel'
+                },
+                 resolve:{
+				   model: 'specieModel'
 					},
-                     ncyBreadcrumb: {
-                                label: 'specie'
-                           }
+                 ncyBreadcrumb: {
+                   label: 'specie'
+                    }
             });
             $sp.state('specieNew', {
                 url: '/new',
@@ -88,10 +89,10 @@ SOFTWARE.
                   resolve:{
 						model: 'specieModel'
 					},
-                     ncyBreadcrumb: {
-                                parent :'specieList', 
-                                label: 'new'
-                           }
+                  ncyBreadcrumb: {
+                        parent :'specieList', 
+                        label: 'new'
+                   }
             });
             $sp.state('specieInstance', {
                 url: '/{specieId:int}',
@@ -120,10 +121,10 @@ SOFTWARE.
                   resolve:{
 						model: 'specieModel'
 					},
-                     ncyBreadcrumb: {
-                                parent :'specieList', 
-                                label: 'details'
-                           }
+                  ncyBreadcrumb: {
+                        parent :'specieList', 
+                        label: 'details'
+                    }
             });
             $sp.state('specieEdit', {
                 url: '/edit',
@@ -139,10 +140,10 @@ SOFTWARE.
                   resolve:{
 						model: 'specieModel'
 					},
-                     ncyBreadcrumb: {
-                                parent :'specieDetail', 
-                                label: 'edit'
-                           }
+                  ncyBreadcrumb: {
+                        parent :'specieDetail', 
+                        label: 'edit'
+                    }
             });
             $sp.state('specieDelete', {
                 url: '/delete',
@@ -155,7 +156,7 @@ SOFTWARE.
                     }
                 },
                   resolve:{
-						model: 'specieModel'
+				      model: 'specieModel'
 					}
             });
             $sp.state('specieBreeds', {

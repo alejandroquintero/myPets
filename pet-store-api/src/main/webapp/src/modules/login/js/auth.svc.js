@@ -21,7 +21,33 @@
         };
 
         //Default Roles
-        var roles = {};
+        var roles = {
+            admin:{
+                administrador:{
+                state:"artistList",
+                icon:"list",
+                label:"administrador",
+                options:["create","edit","delete"]
+            },
+             artist:{        
+                state:"artistList",
+                icon:"list",
+                label:"artista",
+                options:["create","edit","delete"]
+                }
+            },
+            artist:{
+                   artista:{        
+                state:"artistList",
+                icon:"list",
+                label:"artista"
+                }
+            },
+            client:
+                    {
+                state:"cliente"
+            }
+            };
         
          
         this.setValues = function (newValues) {

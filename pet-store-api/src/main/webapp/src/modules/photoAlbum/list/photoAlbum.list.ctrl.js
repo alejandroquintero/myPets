@@ -29,6 +29,7 @@ SOFTWARE.
         function ($scope, $state, photoAlbums, $params, model) {
             $scope.model = model;
             $scope.records = photoAlbums;
+            $scope.buttons = ['detail'];
 
             //Paginación
             this.itemsPerPage = $params.limit;

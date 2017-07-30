@@ -132,14 +132,14 @@ SOFTWARE.
                         <div class="collapse navbar-collapse" id="main-bar" ng-controller="menuCtrl">
                             <ul class="nav navbar-nav">
                                 <li>
-                                  <a ui-sref="animalList({page: 1, limit: 15})">Animals</a>
+                                  <a ui-sref="animalList({page: 1, limit: 15})">Animales</a>
                                 </li>
                                 <li>
                                   <button class="btn btn-default dropdown-toggle" 
                                           type="button" 
                                           id="specieDropdown" 
                                           data-toggle="dropdown">
-                                    Species
+                                    Especies
                                   </button>
                                   <ul class="dropdown-menu" aria-labelledby="specieDropdown">
                                     <li ng-repeat="specie in species">
@@ -147,7 +147,7 @@ SOFTWARE.
                                     </li>
                                   </ul>
                                 </li>
-                                <li><a ui-sref="breedList({page: 1, limit: 15})">Breeds</a></li>
+                                <li><a ui-sref="breedList({page: 1, limit: 15})">Razas</a></li>
                             </ul>
                             <ul class="nav navbar-nav navbar-right">
                                 <login-button></login-button>

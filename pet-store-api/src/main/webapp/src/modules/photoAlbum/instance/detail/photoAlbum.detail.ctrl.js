@@ -29,6 +29,7 @@ SOFTWARE.
         function ($scope, $state, photoAlbum,model) {
             $scope.model = model;
             $scope.currentRecord = photoAlbum;
+            $scope.buttons = ['detail'];
             $scope.actions = {
                 create: {
                     displayName: 'Create',
