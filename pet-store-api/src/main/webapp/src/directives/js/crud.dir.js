@@ -82,7 +82,9 @@ mod.directive('ifPermission', ['CrudTemplatesDir', '$cookies', function (tplDir,
           fields: '=*',
           actions: '=*?',
           name: '=',
-          checklist: '=?'
+          checklist: '=?',
+          thumbnail: '=',
+          thumbnailUri: '='
         },
         restrict: 'E',
         templateUrl: tplDir + 'list.tpl.html',
@@ -328,8 +330,8 @@ mod.directive('ifPermission', ['CrudTemplatesDir', '$cookies', function (tplDir,
                  $scope.actions = {};
                  for(var action in actions){
                      if("read" !== action && "list" !== action 
-                             && "animals" !== action && "species" !== action 
-                             && "breeds" !== action && "photoAlbum" !== action
+                             && "categorys" !== action && "bicycles" !== action 
+                             && "brands" !== action && "photoAlbum" !== action
                              && "refresh" !== action){
                          delete actions[action];
                      }
@@ -346,7 +348,7 @@ mod.directive('ifPermission', ['CrudTemplatesDir', '$cookies', function (tplDir,
 
               if (permissions[key].includes(name) | permissions[key].includes("photoAlbum") ) {
                 if ("read" === permissions[key].split(":")[0])
-                  allowedButtons.push("list",  "animals","species","breeds","photoAlbum", "refresh");
+                  allowedButtons.push("list",  "categorys","bicycles","brands","photoAlbum", "refresh");
                 if ("update" === permissions[key].split(":")[0])
                   allowedButtons.push("edit", "save", "cancel");
                 if ("create" === permissions[key].split(":")[0])

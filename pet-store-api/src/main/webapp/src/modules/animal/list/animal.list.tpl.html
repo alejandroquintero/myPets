@@ -25,7 +25,7 @@ SOFTWARE.
     <div ncy-breadcrumb></div>
     <toolbar name="model.name" display-name="model.displayName" actions='actions'></toolbar>
 </header>
-<list-records  name="model.name" fields="model.fields" records="records" actions="recordActions" buttons="buttons" ></list-records>
+<list-records thumbnail="true" thumbnail-uri="photos"  name="model.name" fields="model.fields" records="records" actions="recordActions" buttons="buttons" ></list-records>
 <pagination ng-if="ctrl.itemsPerPage < ctrl.totalItems"
             total-items="ctrl.totalItems"
             max-size="5"
