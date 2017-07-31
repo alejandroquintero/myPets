@@ -77,6 +77,13 @@ El objeto Animal tiene 2 representaciones JSON:
 ```javascript
 {
     // todo lo de la representación Minimum más los objetos Minimum con relación simple.
+    breed: {
+    id: '' /*Tipo Long*/,
+    name: '' /*Tipo String*/,
+    description: '' /*Tipo String*/,
+    mood: '' /*Tipo String*/,
+    size: '' /*Tipo String*/,
+    lifeExpectancy: '' /*Tipo Integer*/    },
     father: {
     id: '' /*Tipo Long*/,
     name: '' /*Tipo String*/,
@@ -88,14 +95,7 @@ El objeto Animal tiene 2 representaciones JSON:
     name: '' /*Tipo String*/,
     birthDate: '' /*Tipo Date*/,
     color: '' /*Tipo String*/,
-    gender: '' /*Tipo String*/    },
-    breed: {
-    id: '' /*Tipo Long*/,
-    name: '' /*Tipo String*/,
-    description: '' /*Tipo String*/,
-    mood: '' /*Tipo String*/,
-    size: '' /*Tipo String*/,
-    lifeExpectancy: '' /*Tipo Integer*/    }
+    gender: '' /*Tipo String*/    }
 }
 ```
 
@@ -104,7 +104,7 @@ El objeto Animal tiene 2 representaciones JSON:
 #### GET /animals
 
 Retorna una colección de objetos Animal en representación Detail.
-Cada Animal en la colección tiene embebidos los siguientes objetos: Animal, Animal, Breed.
+Cada Animal en la colección tiene embebidos los siguientes objetos: Breed, Animal, Animal.
 
 #### Parámetros
 
@@ -121,7 +121,7 @@ Código|Descripción|Cuerpo
 #### GET /animals/{id}
 
 Retorna una colección de objetos Animal en representación Detail.
-Cada Animal en la colección tiene los siguientes objetos: Animal, Animal, Breed.
+Cada Animal en la colección tiene los siguientes objetos: Breed, Animal, Animal.
 
 #### Parámetros
 
@@ -171,7 +171,7 @@ body|body|Objeto Animal nuevo|Sí|[Representación Detail](#recurso-animal)
 Código|Descripción|Cuerpo
 :--|:--|:--
 201|El objeto Animal actualizado|[Representación Detail](#recurso-animal)
-409|Un objeto relacionado no existe|Mensaje de error
+412|business exception, no se cumple con las reglas de negocio|Mensaje de error
 500|No se pudo actualizar el objeto Animal|Mensaje de error
 
 #### DELETE /animals/{id}
@@ -366,7 +366,7 @@ body|body|Objeto Specie nuevo|Sí|[Representación Detail](#recurso-specie)
 Código|Descripción|Cuerpo
 :--|:--|:--
 201|El objeto Specie actualizado|[Representación Detail](#recurso-specie)
-409|Un objeto relacionado no existe|Mensaje de error
+412|business exception, no se cumple con las reglas de negocio|Mensaje de error
 500|No se pudo actualizar el objeto Specie|Mensaje de error
 
 #### DELETE /species/{id}
@@ -576,7 +576,7 @@ body|body|Objeto Breed nuevo|Sí|[Representación Detail](#recurso-breed)
 Código|Descripción|Cuerpo
 :--|:--|:--
 201|El objeto Breed actualizado|[Representación Detail](#recurso-breed)
-409|Un objeto relacionado no existe|Mensaje de error
+412|business exception, no se cumple con las reglas de negocio|Mensaje de error
 500|No se pudo actualizar el objeto Breed|Mensaje de error
 
 #### DELETE /breeds/{id}

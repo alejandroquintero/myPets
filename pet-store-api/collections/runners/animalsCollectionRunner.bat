@@ -1,1 +1,1 @@
-newman run C:\Users\Asistente\Documents\NetBeansProjects\PetStore\pet-store-api\collections\postman_collectionAnimal.json -e C:\Users\Asistente\Documents\NetBeansProjects\PetStore\pet-store-api\collections\postman_env.json --disable-unicode
+newman run C:\Users\Efrai\Documents\B-Asistencia\PetStore-Git\pet-store-api\collections\postman_collectionAnimal.json -e C:\Users\Efrai\Documents\B-Asistencia\PetStore-Git\pet-store-api\collections\postman_env.json --disable-unicode
