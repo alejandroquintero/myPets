@@ -84,7 +84,6 @@ SOFTWARE.
             $sp.state('animal', {
                 url: '/animals?page&limit',
                 abstract: true,
-                
                 views: {
                      mainView: {
                         templateUrl: basePath + 'animal.tpl.html',

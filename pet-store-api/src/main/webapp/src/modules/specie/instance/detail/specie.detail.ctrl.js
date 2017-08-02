@@ -25,11 +25,17 @@ SOFTWARE.
 
     var mod = ng.module("specieModule");
 
-    mod.controller("specieDetailCtrl", ['$scope', "$state", "specie","model",
-        function ($scope, $state, specie,model) {
+    mod.controller("specieDetailCtrl", ['$scope', "$state", "specie","model","specieModel",
+        function ($scope, $state, specie, model, specieModel) {
             $scope.model = model;
             $scope.currentRecord = specie;
             $scope.buttons = ['detail'];
+            $scope.specieModel = specieModel;
+            $scope.breeds = [];
+            
+            specie.getList('breeds').then(function(breeds){
+              $scope.breeds = breeds;
+            });
             $scope.actions = {
                 create: {
                     displayName: 'Create',
@@ -71,6 +77,39 @@ SOFTWARE.
                     icon: 'link',
                     fn: function () {
                         $state.go('specieBreedsList');
+                    }
+                }
+            };
+            
+            $scope.recordActions = {
+                detail: {
+                    displayName: 'Detail',
+                    icon: 'eye-open',
+                    fn: function (rc) {
+                        $state.go('breedDetail', {breedId: rc.id});
+                    },
+                    show: function () {
+                        return true;
+                    }
+                },
+                edit: {
+                    displayName: 'Edit',
+                    icon: 'edit',
+                    fn: function (rc) {
+                        $state.go('breedEdit', {breedId: rc.id});
+                    },
+                    show: function () {
+                        return true;
+                    }
+                },
+                delete: {
+                    displayName: 'Delete',
+                    icon: 'minus',
+                    fn: function (rc) {
+                        $state.go('breedDelete', {breedId: rc.id});
+                    },
+                    show: function () {
+                        return true;
                     }
                 }
             };

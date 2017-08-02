@@ -25,6 +25,9 @@ package co.edu.uniandes.csw.petstore.dtos.detail;
 
 import co.edu.uniandes.csw.petstore.dtos.minimum.*;
 import co.edu.uniandes.csw.petstore.entities.AnimalEntity;
+import co.edu.uniandes.csw.petstore.entities.PhotoAlbumEntity;
+import java.util.ArrayList;
+import java.util.List;
 import javax.xml.bind.annotation.XmlRootElement;
 import uk.co.jemos.podam.common.PodamExclude;
 
@@ -41,6 +44,8 @@ public class AnimalDetailDTO extends AnimalDTO{
     private BreedDTO breed;
     @PodamExclude
     private AnimalDTO father;
+    @PodamExclude
+    private List<PhotoAlbumDTO> photoAlbum;
 
     /**
      * @generated
@@ -65,6 +70,12 @@ public class AnimalDetailDTO extends AnimalDTO{
         }
         if (entity.getFather()!=null){
         this.father = new AnimalDTO(entity.getFather());
+        }
+        if(entity.getPhotoAlbum()!=null){
+          photoAlbum = new ArrayList<>();
+          for(PhotoAlbumEntity photoEntity : entity.getPhotoAlbum()){
+            this.photoAlbum.add(new PhotoAlbumDTO(photoEntity));
+          }
         }
         
     }
